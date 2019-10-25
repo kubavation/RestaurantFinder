@@ -19,7 +19,7 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    AgmCoreModule.forRoot({apiKey: environment.apiKey})
+    AgmCoreModule.forRoot({apiKey: environment.apiKey, libraries: ['places','geometry']})
   ],
   providers: [
     GoogleMapsAPIWrapper

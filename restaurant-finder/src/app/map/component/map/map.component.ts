@@ -1,5 +1,5 @@
 import { Location } from './../../model/Location';
-import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
+import { Component, OnInit, ViewChild, NgZone, ElementRef } from '@angular/core';
 import { AgmMap, MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 
 declare const google: any;
@@ -15,6 +15,12 @@ export class MapComponent implements OnInit {
 
   @ViewChild(AgmMap, {static: false})
   private map: AgmMap;
+
+  private search: string;
+
+  @ViewChild('serchInput', {static: false})
+  public searchElementRef: ElementRef;
+
 
   //for testing 
   public location: Location = {
@@ -43,8 +49,26 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.location.marker.draggable = true;
-    //this.setCurrentLocation();
-  }
+
+    this.mapsApiLoader.load().then(() => {
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ["address"]
+      });
+      autocomplete.addListener("place_changed", () => {
+        this.zone.run(() => {
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+
+          this.location.lat = place.geometry.location.lat();
+          this.location.lng = place.geometry.location.lng();
+        });
+      });
+  });
+
+}
 
 
   private setCurrentLocation() {
