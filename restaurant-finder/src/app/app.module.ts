@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { MapComponent } from './map/component/map/map.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,7 +19,7 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    AgmCoreModule.forRoot({apiKey: ''})
+    AgmCoreModule.forRoot({apiKey: environment.apiKey})
   ],
   providers: [
     GoogleMapsAPIWrapper
