@@ -11,9 +11,10 @@ declare const google: any;
 })
 export class MapComponent implements OnInit {
 
-  geocoder: any;
+  private geocoder: any;
+
   @ViewChild(AgmMap, {static: false})
-  map: AgmMap;
+  private map: AgmMap;
 
   public location: Location = {
     lat: 51.678418,
@@ -34,7 +35,7 @@ export class MapComponent implements OnInit {
           this.zone = zone;
           this.wrapper = wrapper;
           this.mapsApiLoader.load().then(() => {
-          this.geocoder = new google.maps.Geocoder();
+            this.geocoder = new google.maps.Geocoder();
       });
   }
 
