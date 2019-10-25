@@ -16,6 +16,7 @@ export class MapComponent implements OnInit {
   @ViewChild(AgmMap, {static: false})
   private map: AgmMap;
 
+  //for testing 
   public location: Location = {
     lat: 51.678418,
     lng: 7.809007,
@@ -24,7 +25,7 @@ export class MapComponent implements OnInit {
       lng: 7.809007,
       draggable: true
     },
-    zoom: 5
+    zoom: 15
   };
 
   constructor(public mapsApiLoader: MapsAPILoader,
@@ -42,6 +43,27 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.location.marker.draggable = true;
+    //this.setCurrentLocation();
+  }
+
+
+  private setCurrentLocation() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+
+        this.location = {
+          ...this.location,
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+          marker: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+            draggable: true
+          }
+        };
+
+      });
+    }
   }
 
 }
