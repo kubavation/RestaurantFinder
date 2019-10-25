@@ -45,4 +45,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/restaurant-finder/src/environments/*
+src/environments/environment.ts
