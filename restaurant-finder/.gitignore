@@ -46,3 +46,4 @@ testem.log
 Thumbs.db
 
 src/environments/*
+restaurant-finder/src/environments/environment.ts
