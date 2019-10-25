@@ -16,12 +16,6 @@ export class MapComponent implements OnInit {
   @ViewChild(AgmMap, {static: false})
   private map: AgmMap;
 
-  private search: string;
-
-  @ViewChild('serchInput', {static: false})
-  public searchElementRef: ElementRef;
-
-
   //for testing 
   public location: Location = {
     lat: 51.678418,
@@ -50,23 +44,23 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.location.marker.draggable = true;
 
-    this.mapsApiLoader.load().then(() => {
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["address"]
-      });
-      autocomplete.addListener("place_changed", () => {
-        this.zone.run(() => {
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+  //   this.mapsApiLoader.load().then(() => {
+  //     let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+  //       types: ["address"]
+  //     });
+  //     autocomplete.addListener("place_changed", () => {
+  //       this.zone.run(() => {
+  //         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
+  //         if (place.geometry === undefined || place.geometry === null) {
+  //           return;
+  //         }
 
-          this.location.lat = place.geometry.location.lat();
-          this.location.lng = place.geometry.location.lng();
-        });
-      });
-  });
+  //         this.location.lat = place.geometry.location.lat();
+  //         this.location.lng = place.geometry.location.lng();
+  //       });
+  //     });
+  // });
 
 }
 

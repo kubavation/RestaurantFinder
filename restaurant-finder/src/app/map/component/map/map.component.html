@@ -1,7 +1,3 @@
-<input placeholder="search" #serchInput [(ngModel)]="search" type="text" class="form-control"
- (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text">
-<button (click)="search_()">search</button>
-
 <agm-map style="width: 500px;height: 500px;" 
   [(latitude)]="location.lat" 
   [(longitude)]="location.lng" 

@@ -1,3 +1,4 @@
+import { MapSearchComponent } from './map/component/map-search/map-search.component';
 import { environment } from './../environments/environment';
 import { MapComponent } from './map/component/map/map.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,7 +13,8 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent
+    MapComponent,
+    MapSearchComponent
   ],
   imports: [
     BrowserModule,
