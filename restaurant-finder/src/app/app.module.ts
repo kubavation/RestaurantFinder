@@ -18,10 +18,11 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    AgmCoreModule,
+    AgmCoreModule.forRoot({apiKey: ''})
+  ],
+  providers: [
     GoogleMapsAPIWrapper
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
