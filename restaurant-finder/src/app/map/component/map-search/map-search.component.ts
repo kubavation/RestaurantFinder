@@ -1,6 +1,9 @@
+import { findLocation } from './../../../action/map.action';
 import { MapsAPILoader } from '@agm/core';
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { fromEvent } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/reducer/map.reducer';
 
 @Component({
   selector: 'app-map-search',
@@ -13,10 +16,13 @@ export class MapSearchComponent implements OnInit {
   public searchElementRef: ElementRef;
 
   constructor(private mapsApiLoader: MapsAPILoader,
-              private zone: NgZone) { }
+              private zone: NgZone,
+              private store: Store<State>) { }
 
   ngOnInit() {
     this.init();
+    this.store.dispatch(findLocation({lat: 2.32, lng: 3.21})); 
+    console.log('dispatched')
   }
 
   init() {

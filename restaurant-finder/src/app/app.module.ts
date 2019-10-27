@@ -1,3 +1,4 @@
+import { mapReducer } from './reducer/map.reducer';
 import { MapSearchComponent } from './map/component/map-search/map-search.component';
 import { environment } from './../environments/environment';
 import { MapComponent } from './map/component/map/map.component';
@@ -9,6 +10,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
     AppRoutingModule,
     FormsModule,
     NgbModule,
+    StoreModule.forRoot(mapReducer), //todo make it generic 
     AgmCoreModule.forRoot({apiKey: environment.apiKey, libraries: ['places','geometry']})
   ],
   providers: [

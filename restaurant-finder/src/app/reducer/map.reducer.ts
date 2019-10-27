@@ -14,4 +14,4 @@ const initialState: State = {
 export const mapReducer = createReducer(
     initialState,
     on(MapActions.findLocation, (state, {lat, lng}) =>  ({...state, lat, lng}))
-);
+)
