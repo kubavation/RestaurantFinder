@@ -11,5 +11,5 @@ export interface Location {
     address_zip?: string;
     address_state?: string;
     marker?: Marker;
-  }
+}
   
