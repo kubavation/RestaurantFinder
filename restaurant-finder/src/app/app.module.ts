@@ -1,3 +1,4 @@
+import { RestaurantListComponent } from './restaurant/component/restaurant-list/restaurant-list.component';
 import { mapReducer } from './reducer/map.reducer';
 import { MapSearchComponent } from './map/component/map-search/map-search.component';
 import { environment } from './../environments/environment';
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     MapComponent,
-    MapSearchComponent
+    MapSearchComponent,
+    RestaurantListComponent
   ],
   imports: [
     BrowserModule,
