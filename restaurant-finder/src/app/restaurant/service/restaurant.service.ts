@@ -14,7 +14,7 @@ export class RestaurantService {
 
 
   findByLocation(location: Location) {
-    return this.http.get<any>(this.basicUrl + '?count=10&lat=' + location.lat + '&lon=' + location.lng,
+    return this.http.get<any>(this.basicUrl + '?count=10&lat=' + location.lat + '&lon=' + location.lng, //todo radius?
      {headers: this.buildHttpHeaders() });
   }
 
