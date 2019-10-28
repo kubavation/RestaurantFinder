@@ -4,7 +4,7 @@ export interface Location {
     lat: number;
     lng: number;
     viewport?: object;
-    zoom: number;
+    zoom?: number;
     address_level_1?: string;
     address_level_2?: string;
     address_country?: string;
@@ -12,4 +12,3 @@ export interface Location {
     address_state?: string;
     marker?: Marker;
 }
-  

@@ -1,3 +1,4 @@
+import { Location } from './../../model/Location';
 import { findLocation } from './../../../action/map.action';
 import { MapsAPILoader } from '@agm/core';
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
@@ -46,11 +47,14 @@ onPlaceChanged(element) {
       return;
     }
 
-    this.store.dispatch(findLocation({
-        lat: place.geometry.location.lat(),
-        lng: place.geometry.location.lng()
-      }));
+    const location: Location = {
+      lat: place.geometry.location.lat(),
+      lng: place.geometry.location.lng()
+    };
+
+    this.store.dispatch(findLocation({location}));
   });
+  
 }
 
 
