@@ -1,3 +1,4 @@
+import { RestaurantService } from './../../service/restaurant.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit() {
+    this.restaurantService.findByLocation({lat: 51.0898838, lng: 17.0372})
+      .subscribe(r => console.log(r));
   }
+
+
 
 }
