@@ -13,5 +13,6 @@ const initialState: State = {
 
 export const mapReducer = createReducer(
     initialState,
-    on(MapActions.findLocation, (state, {lat, lng}) =>  ({...state, lat, lng}))
+    on(MapActions.findLocation, (state, {lat, lng}) =>  { console.log('here ', lat, ' ', lng); return {...state, lat, lng}})
 )
+

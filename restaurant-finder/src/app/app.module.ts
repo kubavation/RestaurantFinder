@@ -23,7 +23,7 @@ import { StoreModule } from '@ngrx/store';
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    StoreModule.forRoot(mapReducer), //todo make it generic 
+    StoreModule.forRoot({maps: mapReducer}), //todo make it generic 
     AgmCoreModule.forRoot({apiKey: environment.apiKey, libraries: ['places','geometry']})
   ],
   providers: [
