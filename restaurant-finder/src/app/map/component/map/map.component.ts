@@ -5,6 +5,7 @@ import { AgmMap, MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 import { Store, select } from '@ngrx/store';
 import { State } from 'src/app/reducer/map.reducer';
 import { Observable } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
 
 declare const google: any;
 
@@ -20,6 +21,8 @@ export class MapComponent implements OnInit {
   @ViewChild(AgmMap, {static: false})
   private map: AgmMap;
 
+  public lat;
+  public lng;
   //for testing 
   public location: Location = {
     lat: 51.678418,
@@ -51,7 +54,17 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.location.marker.draggable = true;
     //this.location$ = this.store.pipe(select(getChosenLocation));
-    this.location$ = this.store.select(getChosenLocation);
+    this.location$ = this.store.pipe(select(getChosenLocation)); 
+    // this.store.pipe(
+    //     select(getChosenLocation),
+    //     tap(r => console.log('in tap ', r))
+    //     );
+    //     //.subscribe(r => {console.log('hehe',r); this.location = this.setLocation(r)});
+
+    // this.store.pipe(
+    //   select(getChosenLocation),
+    //   tap(r => console.log('333', r))
+    // ).subscribe(w => { console.log(w); if(w != null) { this.lat = w.lat; this.lng = w.lng;} } )
 }
 
 
@@ -68,10 +81,28 @@ export class MapComponent implements OnInit {
             lng: position.coords.longitude,
             draggable: true
           }
-        };
+        };    
 
       });
     }
   }
+
+  setLocation(s) {
+    console.log('in set location')
+    console.log('here222', s)
+      return {
+        lat: s.lat,
+        lng: s.lng,
+        marker: {
+          lat: s.lat,
+          lng: s.lng,
+          draggable: true
+        }
+      };
+
+
+      // console.log('location: ')
+      // console.log(this.location)
+    };
 
 }
