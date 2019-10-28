@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { StoreModule } from '@ngrx/store';
     AppRoutingModule,
     FormsModule,
     NgbModule,
+    HttpClientModule,
     StoreModule.forRoot({maps: mapReducer}), //todo make it generic 
     AgmCoreModule.forRoot({apiKey: environment.apiKey, libraries: ['places', 'geometry']})
   ],
