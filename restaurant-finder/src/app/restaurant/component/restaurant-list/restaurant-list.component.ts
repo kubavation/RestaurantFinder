@@ -8,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantListComponent implements OnInit {
 
+  private test: Array<any> = [];
+
   constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit() {
     this.restaurantService.findByLocation({lat: 51.0898838, lng: 17.0372})
-      .subscribe(r => console.log(r));
+      .subscribe(r => {console.log(r); this.test = r} );
   }
 
 
