@@ -55,7 +55,7 @@ export class MapComponent implements OnInit {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
           marker: {
-            lat: position.coorcx[f]ikds.latitude,
+            lat: position.coords.latitude,
             lng: position.coords.longitude,
             draggable: true
           }
