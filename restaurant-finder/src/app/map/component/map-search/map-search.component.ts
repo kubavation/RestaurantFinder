@@ -58,6 +58,19 @@ onPlaceChanged(element) {
 }
 
 
+getCurrentLocalization() {
+  if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition((position) => {
+
+      const location = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+
+      this.store.dispatch(findLocation({location}));
+    });
+  }
+}
 
 
 }

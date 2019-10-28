@@ -1,7 +1,10 @@
 <div>
-
+    
     <input #searchInput type="text" class="form-control"
-      (keydown.enter)="$event.preventDefault()" placeholder="Wyszukaj" 
+      (keydown.enter)="$event.preventDefault()" placeholder="Wyszukaj"
+      style="margin-right: 30px;" 
       autocorrect="off" autocapitalize="off" spellcheck="off" type="text">
+     Or  
+    <button style="margin-left:30px;" (click)="getCurrentLocalization()">Get your localizaton</button>
    
 </div>
