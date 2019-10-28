@@ -10,7 +10,7 @@
   <agm-marker [latitude]="(location$ | async).lat" 
               [longitude]="(location$ | async).lng" 
               [markerDraggable]="true"
-               (dragEnd)='markerDragEnd($event)'>
+               (dragEnd)='markerCoords($event)'>
   </agm-marker>
 </agm-map>
 

@@ -30,7 +30,7 @@ export class MapComponent implements OnInit {
       lng: 7.809007,
       draggable: true
     },
-    zoom: 15
+    zoom: 20
   };
 
   private location$: Observable<Location>;
@@ -73,5 +73,28 @@ export class MapComponent implements OnInit {
       });
     }
   }
+
+
+  markerCoords($event) {
+    console.log($event.coords.lat);
+    console.log($event.coords.lng);
+  }
+ 
+  // getAddress(latitude, longitude) {
+  //   this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
+  //     console.log(results);
+  //     console.log(status);
+  //     if (status === 'OK') {
+  //       if (results[0]) {
+  //         this.zoom = 12;
+  //         this.address = results[0].formatted_address;
+  //       } else {
+  //         window.alert('No results found');
+  //       }
+  //     } else {
+  //       window.alert('Geocoder failed due to: ' + status);
+  //     }
+ 
+  //   });
   
 }
