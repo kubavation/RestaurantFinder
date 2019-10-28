@@ -3,7 +3,7 @@
 <agm-map style="width: 500px;height: 500px;" 
   [latitude]="(location$ | async).lat" 
   [longitude]="(location$ | async).lng" 
-  [(zoom)]="10" 
+  [(zoom)]="location.zoom" 
   [disableDefaultUI]="true" 
   [zoomControl]="true" 
   [(fitBounds)]='location.viewport'>
