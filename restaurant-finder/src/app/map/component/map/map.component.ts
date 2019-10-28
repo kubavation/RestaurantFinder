@@ -22,17 +22,18 @@ export class MapComponent implements OnInit {
   @ViewChild(AgmMap, {static: false})
   private map: AgmMap;
 
+  private zoom = 15;
   //for testing todo remove
-  public location: Location = {
-    lat: 51.678418,
-    lng: 7.809007,
-    marker: {
-      lat: 51.678418,
-      lng: 7.809007,
-      draggable: true
-    },
-    zoom: 20
-  };
+  // public location: Location = {
+  //   lat: 51.678418,
+  //   lng: 7.809007,
+  //   marker: {
+  //     lat: 51.678418,
+  //     lng: 7.809007,
+  //     draggable: true
+  //   },
+  //   zoom: 20
+  // };
 
   private location$: Observable<Location>;
 
@@ -51,7 +52,6 @@ export class MapComponent implements OnInit {
 
 
   ngOnInit() {
-    this.location.marker.draggable = true;
     this.location$ = this.store.pipe(select(getChosenLocation));
 }
 
@@ -60,16 +60,16 @@ export class MapComponent implements OnInit {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
 
-        this.location = {
-          ...this.location,
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-          marker: {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-            draggable: true
-          }
-        };
+        // this.location = {
+        //   ...this.location,
+        //   lat: position.coords.latitude,
+        //   lng: position.coords.longitude,
+        //   marker: {
+        //     lat: position.coords.latitude,
+        //     lng: position.coords.longitude,
+        //     draggable: true
+        //   }
+        // };
 
       });
     }
@@ -77,9 +77,6 @@ export class MapComponent implements OnInit {
 
 
   markerCoords($event) {
-    console.log($event.coords.lat);
-    console.log($event.coords.lng);
-
     const location: Location = {
       lat: $event.coords.lat,
       lng: $event.coords.lng

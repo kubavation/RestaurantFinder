@@ -30,7 +30,7 @@ export class RestaurantListComponent implements OnInit {
   }
 
   setLocation(elem) {
-    const location: Location = {lat: elem.latitude, lng: elem.longitude};
+    const location = {lat: parseFloat(elem.latitude + '0000'), lng:  parseFloat(elem.longitude + '0000')}; //because of api low accuracy
     this.store.dispatch(findLocation({location}));
   }
 

@@ -3,10 +3,9 @@
 <agm-map style="width: 500px;height: 500px;" 
   [latitude]="(location$ | async).lat" 
   [longitude]="(location$ | async).lng" 
-  [(zoom)]="location.zoom" 
-  [disableDefaultUI]="true" 
-  [zoomControl]="true" 
-  [(fitBounds)]='location.viewport'>
+  [zoom]="zoom" 
+  [disableDefaultUI]="true"
+  [zoomControl]="true">
   <agm-marker [latitude]="(location$ | async).lat" 
               [longitude]="(location$ | async).lng" 
               [markerDraggable]="true"
@@ -14,12 +13,6 @@
   </agm-marker>
 </agm-map>
 
-<!-- 
-<div>
-  Wybrane 
-  <p>Lat: {{ (location$ | async)?.lat}}</p>
-  <p>Lng: {{ (location$ | async)?.lng}}</p>
-</div> -->
 
 
 </div>
