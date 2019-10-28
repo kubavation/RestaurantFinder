@@ -12,8 +12,8 @@ export class RestaurantService {
 
   constructor(private http: HttpClient) { }
 
-
   findByLocation({lat, lng}) {
+    console.log('????????/')
     return this.http.get<any>(this.basicUrl + `?count=10&lat=${lat}&lon=${lng}`, //todo radius?
      {headers: this.buildHttpHeaders() });
   }
@@ -24,6 +24,7 @@ export class RestaurantService {
       'user-key': environment.zomatoKey
     });
   }
+
 
 
 }
