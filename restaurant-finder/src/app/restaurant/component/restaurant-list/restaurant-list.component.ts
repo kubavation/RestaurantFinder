@@ -1,3 +1,5 @@
+import { findLocation } from './../../../action/map.action';
+import { Location } from './../../../map/model/Location';
 import { Observable } from 'rxjs';
 import { RestaurantService } from './../../service/restaurant.service';
 import { Component, OnInit } from '@angular/core';
@@ -27,6 +29,9 @@ export class RestaurantListComponent implements OnInit {
       );
   }
 
-
+  setLocation(elem) {
+    const location: Location = {lat: elem.latitude, lng: elem.longitude};
+    this.store.dispatch(findLocation({location}));
+  }
 
 }

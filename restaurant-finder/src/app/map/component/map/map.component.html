@@ -9,7 +9,7 @@
   [(fitBounds)]='location.viewport'>
   <agm-marker [latitude]="(location$ | async).lat" 
               [longitude]="(location$ | async).lng" 
-              [markerDraggable]="location.marker.draggable"
+              [markerDraggable]="true"
                (dragEnd)='markerDragEnd($event)'>
   </agm-marker>
 </agm-map>
