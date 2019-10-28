@@ -1,6 +1,10 @@
+import { getChosenLocation } from './../../../selector/map.selector';
 import { Location } from './../../model/Location';
 import { Component, OnInit, ViewChild, NgZone, ElementRef } from '@angular/core';
 import { AgmMap, MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
+import { Store, select } from '@ngrx/store';
+import { State } from 'src/app/reducer/map.reducer';
+import { Observable } from 'rxjs';
 
 declare const google: any;
 
@@ -28,9 +32,12 @@ export class MapComponent implements OnInit {
     zoom: 15
   };
 
+  private location$;
+
   constructor(public mapsApiLoader: MapsAPILoader,
               private zone: NgZone,
-              private wrapper: GoogleMapsAPIWrapper) {
+              private wrapper: GoogleMapsAPIWrapper,
+              public store: Store<State>) {
 
           this.mapsApiLoader = mapsApiLoader;
           this.zone = zone;
@@ -43,6 +50,8 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.location.marker.draggable = true;
+    //this.location$ = this.store.pipe(select(getChosenLocation));
+    this.location$ = this.store.select(getChosenLocation);
 }
 
 

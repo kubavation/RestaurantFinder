@@ -54,7 +54,7 @@ onPlaceChanged(element) {
 
     this.store.dispatch(findLocation({location}));
   });
-  
+
 }
 
 

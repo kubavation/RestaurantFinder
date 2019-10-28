@@ -11,3 +11,9 @@
                (dragEnd)='markerDragEnd($event)'>
   </agm-marker>
 </agm-map>
+
+<div>
+  Wybrane 
+  <p>Lat: {{ (location$ | async)?.lat}}</p>
+  <p>Lng: {{ (location$ | async)?.lng}}</p>
+</div>

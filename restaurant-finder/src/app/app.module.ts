@@ -24,7 +24,7 @@ import { StoreModule } from '@ngrx/store';
     FormsModule,
     NgbModule,
     StoreModule.forRoot({maps: mapReducer}), //todo make it generic 
-    AgmCoreModule.forRoot({apiKey: environment.apiKey, libraries: ['places','geometry']})
+    AgmCoreModule.forRoot({apiKey: environment.apiKey, libraries: ['places', 'geometry']})
   ],
   providers: [
     GoogleMapsAPIWrapper
