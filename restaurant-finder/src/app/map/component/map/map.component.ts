@@ -6,6 +6,7 @@ import { Store, select } from '@ngrx/store';
 import { State } from 'src/app/reducer/map.reducer';
 import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
+import { findLocation } from 'src/app/action/map.action';
 
 declare const google: any;
 
@@ -78,6 +79,13 @@ export class MapComponent implements OnInit {
   markerCoords($event) {
     console.log($event.coords.lat);
     console.log($event.coords.lng);
+
+    const location: Location = {
+      lat: $event.coords.lat,
+      lng: $event.coords.lng
+    };
+
+    this.store.dispatch(findLocation({location}));
   }
  
   // getAddress(latitude, longitude) {
