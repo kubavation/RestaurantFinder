@@ -24,8 +24,7 @@ export class RestaurantListComponent implements OnInit {
     this.places$ =  this.store.pipe(
         select(getChosenLocation),
         filter(res => res),
-        flatMap(r => this.restaurantService.findByLocation(r)),
-        tap(r => console.log(r))
+        flatMap(r => this.restaurantService.findByLocation(r))
       );
   }
 
